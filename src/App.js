@@ -1,6 +1,7 @@
 import './App.css';
 import {Nav} from './Nav.js';
 import {MyComponent, Pad} from './button.js';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
@@ -8,7 +9,7 @@ function App() {
      <Nav /> 
      <div id="drum-elements" ></div>
      <MyComponent />
-    <Pad />
+     <Pad />
     <p>DESIGN BY KHAYA ZIKHALI</p>
     </div>
   )
