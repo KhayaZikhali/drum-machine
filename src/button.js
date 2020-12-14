@@ -12,26 +12,20 @@ class MyComponent extends React.Component {
     )
  }
 }
-// create a state with text in it
-// update that state when a buttton is clicked 
-// render new state in div with id display 
-//use bootstrap grid to align the buttons
+
+//
 
 class Pad extends React.Component {
   constructor(props) {
     super(props);
-    this.handleClick = this.handleClick.bind(this);
     this.state = {
       quote: 'ROLS OF RYCE' 
     };
   }
+   //add eventlisteners  
    
-  handleClick() {
-    this.setState(state => ({
-      quote : ""
-    }));
-  }
-  
+   
+
   render() {
     return (
       <div id="drum-machine">
@@ -43,7 +37,8 @@ class Pad extends React.Component {
        <div class="container">
         <div class="row">
           <div class=" container-xxl col-md-3 text-center">
-            <button class="btn btn-primary btn-xl drumpad-Q" id="Q"onClick={()=>{this.setState(state => ({quote : "Trombone"}));}}>Q</button>
+            <button class="btn btn-primary btn-xl drumpad-Q" id="Q"onClick={()=>{this.setState(state => ({quote : "Trombone"}));}}
+            >Q</button>
           </div>
            <div class="container-xxl col-md-3 text-center">
              <button class="btn btn-primary btn-xl drumpad-W" id="W" onClick={()=>{this.setState(state => ({quote : "Snare"}));}}>W</button>
@@ -53,7 +48,6 @@ class Pad extends React.Component {
           </div>
           </div>
         </div>
-
         {/* Second row of buttons in the pad */}
         <div class="container">
         <div class="row this" >
@@ -68,23 +62,29 @@ class Pad extends React.Component {
           </div>
         </div>
         </div>
-
         {/* Third row of buttons in the pad */}
         <div class="container">
         <div class="row this" >
           <div class=" container-xxl col-md-3 text-center">
-            <button class="btn btn-primary btn-xl">Z</button>
+            <button class="btn btn-primary btn-xl" id="Z" onClick={()=>{this.setState(state => ({quote : "ALank"}));}}>Z</button>
           </div>
            <div class="container-xxl col-md-3 text-center">
-             <button class="btn btn-primary btn-xl">X</button>
+             <button class="btn btn-primary btn-xl" onClick={()=>{this.setState(state => ({quote : "ALlsm;"}));}}>X</button>
            </div>
            <div class=" container-xxl col-md-3 text-center">
-             <button class="btn btn-primary btn-xl">C</button>
+             <button class="btn btn-primary btn-xl" onClick={()=>{this.setState(state => ({quote : "SMomaiasjnks"}));}}>C</button>
+           </div>
           </div>
+         </div>
         </div>
-        </div>
-      </div>
-      </div>
+       <p>
+         Task for the day of tueday
+         1 add a clock to ypur project 
+         2 add the soundbites to each of the buttons
+         3 attach the soundbites to a keypress event
+         4 adjust the design to amke it more responsive to various screen sizes
+       </p>
+       </div>
     );
   }
 }
