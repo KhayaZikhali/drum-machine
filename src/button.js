@@ -1,102 +1,107 @@
 import React from 'react';
 import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import flute1 from './bites/FLUTE1.mp3';
+import flute2 from './bites/FLUTE2.mp3';
+import flute3 from './bites/FLUTE3.mp3';
+import flute4 from './bites/FLUTE4.mp3';
+import saxy1 from './bites/SAXY1.mp3';
+import saxy2 from './bites/SAXY2.mp3';
+import saxy4 from './bites/SAXY4.mp3';
+import flute5 from './bites/FLUTE5.mp3';
+import {Howl , Howler} from 'howler';
+// import audio clips
 
-// create the class for the power button
-class MyComponent extends React.Component {
-  //logic 
-  //result
-    render () {
-    return (
-    <h1> Rain or shine </h1>      
-    )
- }
-}
+// create a label const for each of the sounds
+const audioclips = [
+  { sound : flute1 , label: "Q"},
+  { sound : flute2 , label: "A"},
+  { sound : flute3 , label: "Z"}
+]
 
-//
+const audioclips2 = [
+  { sound : flute4 , label: "W"},
+  { sound : flute5 , label: "S"},
+  { sound : saxy1 , label: "X"}
+];
 
+const audioclips3 = [  
+  { sound : saxy2 , label: "E"},
+  { sound : saxy4 , label: "D"}
+]
+  
 class Pad extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      quote: 'ROLS OF RYCE' 
+      quote: '  ' 
     };
   }
-   //add eventlisteners  
+
+  SoundPlay = (src)=> {
+    const sound = new Howl ({
+      src
+    })
+    sound.play();
+  } 
+  
+   //add eventlisteners
    
-   
+   RenderButtonandName(){
+     return audioclips.map((soundObj, index) => {  
+       return (
+         <button class="btn btn-primary btn-xl" key ={index} onClick={() => this.SoundPlay(soundObj.sound)} onclick={()=>{this.setState(state => ({quote : "EEVRYBI"}));}}>
+           {soundObj.label}
+         </button>
+       )
+     })
+   }
+  
+   RenderButtonandNameE(){
+    return audioclips2.map((soundObj, index) => {  
+      return (
+        <button class="btn btn-primary btn-xl" key ={index} onClick={() => this.SoundPlay(soundObj.sound)} onclick={()=>{this.setState(state => ({quote : "EEVRYBI"}));}}>
+          {soundObj.label}
+        </button>
+      )
+    })
+  }
+
+  RenderButtonandNameR(){
+    return audioclips3.map((soundObj, index) => {  
+      return (
+        <button class="btn btn-primary btn-xl col-md-3" key ={index} onClick={() => this.SoundPlay(soundObj.sound)} onclick={()=>{this.setState(state => ({quote : "EEVRYBI"}));}}>
+          {soundObj.label}
+        </button>
+      )
+    })
+  }
 
   render() {
+    Howler.volume(1.0)
     return (
       <div id="drum-machine">
+        <script>
+           </script>
         <div class="container-fluid" id="display">
           <h2 class="t">{this.state.quote}</h2>
         </div>
-      <div className="pad">
+      <div className="pad cols-3">
         {/* First row of buttons in the pad */}
-       <div class="container">
-        <div class="row">
-          <div class=" container-xxl col-md-3 text-center">
-            <button class="btn btn-primary btn-xl drumpad-Q" id="Q"onClick={()=>{this.setState(state => ({quote : "Trombone"}));}}
-            >Q</button>
-          </div>
-           <div class="container-xxl col-md-3 text-center">
-             <button class="btn btn-primary btn-xl drumpad-W" id="W" onClick={()=>{this.setState(state => ({quote : "Snare"}));}}>W</button>
-           </div>
-           <div class=" container-xxl col-md-3 text-center">
-             <button class="btn btn-primary btn-xl drumpad-E" id="E" onClick={()=>{this.setState(state => ({quote : "PCWORLD"}));}}>E</button>
-          </div>
-          </div>
-        </div>
-        {/* Second row of buttons in the pad */}
-        <div class="container">
-        <div class="row this" >
-          <div class=" container-xxl col-md-3 text-center">
-            <button class="btn btn-primary btn-xl drumpad-A" id="A" onClick={()=>{this.setState(state => ({quote : "EEVRYBI"}));}}>A</button>
-          </div>
-           <div class="container-xxl col-md-3 text-center">
-             <button class="btn btn-primary btn-xl drumpad-S" id="S" onClick={()=>{this.setState(state => ({quote : "LKMLKM"}));}}>S</button>
-           </div>
-           <div class=" container-xxl col-md-3 text-center">
-             <button class="btn btn-primary btn-xl drumpad-D" id="D" onClick={()=>{this.setState(state => ({quote : "LKNKNNNKL"}));}}>D</button>
-          </div>
-        </div>
-        </div>
-        {/* Third row of buttons in the pad */}
-        <div class="container">
-        <div class="row this" >
-          <div class=" container-xxl col-md-3 text-center">
-            <button class="btn btn-primary btn-xl" id="Z" onClick={()=>{this.setState(state => ({quote : "ALank"}));}}>Z</button>
-          </div>
-           <div class="container-xxl col-md-3 text-center">
-             <button class="btn btn-primary btn-xl" onClick={()=>{this.setState(state => ({quote : "ALlsm;"}));}}>X</button>
-           </div>
-           <div class=" container-xxl col-md-3 text-center">
-             <button class="btn btn-primary btn-xl" onClick={()=>{this.setState(state => ({quote : "SMomaiasjnks"}));}}>C</button>
-           </div>
-          </div>
-         </div>
-        </div>
-       <p>
-         Task for the day of tueday
-         1 add a clock to ypur project 
-         2 add the soundbites to each of the buttons
-         3 attach the soundbites to a keypress event
-         4 adjust the design to amke it more responsive to various screen sizes
-       </p>
-       </div>
+        <div class="well">{this.RenderButtonandName()}</div>
+        <div class="well">{this.RenderButtonandNameE()}</div>
+        <div class="well">{this.RenderButtonandNameR()}</div>
+      </div>
+      </div>
     );
   }
 }
 // display 
-export { MyComponent ,Pad}
+export {Pad}
 
-         /*update the state of the quoteo on click and render the state in display
-           use bootstrap grid to align items and use fa fas to add symbols in class
-           add well class the buttons
-      
-           Create 3 wells for each row of buttons
-           create a div within each well for a button
-           create buttons for 
-         */
+         /*
+         1 a
+         
+         
+           */
       
