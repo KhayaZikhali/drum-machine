@@ -20,36 +20,35 @@ nav {
 
 .pad {
   justify-content:space-between;
-  width:80vw;
+  width:50vw;
   height:50vh;
   margin:auto;
   justify-content:center;
   padding:20px;
-  margin-top:12%;
+  margin-top:7%;
   display:flex;
 }
 
 .btn-xl {
-  padding: 10px 20px;
+  padding: 10px;
   font-size: 20px;
-  border-radius: 10px;
   width:100%;
   height:56%;
-  margin-top:0.1%;
+  margin-top:1%;
 }
 
 .well {
   width:33%;
   background-color:transparent;
   text-align: center;
-  margin:0%;
+  margin:1%;
 }
 .btn-xl:hover {
   cursor: pointer
 }
 
 #display {
-  width:30vw;
+  width:min(30vw);
   height: 10vh;
   background-color:grey;
   margin:auto;
