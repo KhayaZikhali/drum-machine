@@ -15,38 +15,35 @@ import {Howl , Howler} from 'howler';
 
 // create a label const for each of the sounds
 // audioclips for hte first column o fbuttons
+
 const audioclips = [
   { sound : CiHat01 , label: "Q" , name : "CiHat01"},
   { sound : CiHat02 , label: "A" , name : "CiHat02"},
   { sound : CiHat03 , label: "Z" , name : "CiHat03"},]
   
-// audioclips for the second column of buttons
+  // audioclips for the second column of buttons
   const  wsx= [
   { sound : Kick01 , label: "W" , name : "Kick01"},
   { sound : Kick02 , label: "S" , name : "Kick02"},
   { sound : Kick03 , label: "X" , name : "Kick03"},
 ]
+
 //audioclips for the third column of buttons  
   const edc = [
   { sound : OpHat01 , label: "E" , name:"OpHat01"},
   { sound : OpHat02 , label: "D" , name:"OpHat02"},
   { sound : OpHat03 , label: "C" , name:"OpHat03"}
-]
+];
 
 //add keypress handler
-
 class Pad extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      quote: '  ' 
+      instrument: '  ' 
     };
   }
-  keyLog = (function () {
-    window.addEventListener('keydown', (event) => {
-      console.log(event.code);
-    });
-  })();
+
 //function to play the sound from its src
   SoundPlay = (src)=> {
     const sound = new Howl ({
@@ -54,46 +51,96 @@ class Pad extends React.Component {
     })
     sound.play();
   } 
+
    // render a button element for the the first column of buttons   
    RenderButtonandName(){
-     return audioclips.map((soundObj, index) => {  
-       return (
-         <button className="btn btn-primary btn-xl" key ={index} onClick={() => {
-           this.SoundPlay(soundObj.sound);
+     return audioclips.map((soundObj, index) => {
+       //keyboard event listener
+      document.addEventListener("keydown", (event)=>{
+        if (event.key === soundObj.label.toLowerCase()){
+           this.SoundPlay(soundObj.sound)
+           setTimeout(function(){
+            window.location.reload();
+         }, 400);
+           // updatet the state
            this.setState({
-             quote: soundObj.name
+            instrument: soundObj.name
+          })
+        }
+      })  
+       return (
+         <button className="btn btn-primary btn-xl" key ={index} onClick={() => {this.SoundPlay(soundObj.sound);
+           this.setState({
+             instrument : soundObj.name
            })
+           setTimeout(function(){
+            window.location.reload();
+         }, 400);
          }}>
            {soundObj.label}
          </button>
        )
      })
    };
+   
 
 // render  buttons for the second column
    RenderSecondColumn(){
-     return wsx.map((soundObj, index) => {  
+     return wsx.map((soundObj,index) => {
+       // keyboard event listener
+       document.addEventListener("keydown", (event)=>{
+        if (event.key === soundObj.label.toLowerCase()){
+           this.SoundPlay(soundObj.sound)
+           console.log(event.key)
+           // update the state
+           this.setState({
+            instrument : soundObj.name
+          })
+          setTimeout(function(){
+            window.location.reload();
+         },400);
+        }
+      })  
        return (
-         <button className="btn btn-primary btn-xl" key ={index} onClick={() => 
-          {this.SoundPlay(soundObj.sound);
+         <button className="btn btn-primary btn-xl" key ={index} onClick={() =>{this.SoundPlay(soundObj.sound);
             this.setState({
-              quote: soundObj.name
-            }) }}>
+              instrument: soundObj.name
+            })
+            setTimeout(function(){
+              window.location.reload();
+           }, 400);
+            }}>
            {soundObj.label}
          </button>
        )
      })
    };
+
    //render buttons for the third column
    RenderThirdColumn(){
      return edc.map((soundObj, index) => {  
+       //keyboard event listener
+       document.addEventListener("keydown", (event)=>{
+        if (event.key === soundObj.label.toLowerCase()){
+           this.SoundPlay(soundObj.sound)
+           console.log(event.key)
+           // set the state
+           this.setState({
+            instrument : soundObj.name
+          })
+          setTimeout(function(){
+            window.location.reload();
+         },  400);
+        }
+      })  
        return (
          <button className="btn btn-primary btn-xl" key={index} onClick={()=> {this.SoundPlay(soundObj.sound)
           this.setState({
-            quote: soundObj.name})
-          }}
-          
-          >
+            instrument: soundObj.name})
+            setTimeout(function(){
+              window.location.reload();
+           },  400);
+          }}>
            {soundObj.label}
          </button>
        )
@@ -107,7 +154,7 @@ class Pad extends React.Component {
         <script>
            </script>
         <div className="container-fluid" id="display">
-          <h2 className="t">{this.state.quote}</h2>
+          <h2 className="t">{this.state.instrument}</h2>
         </div>
       <div className="pad">
         {/* First row of buttons in the pad */}
