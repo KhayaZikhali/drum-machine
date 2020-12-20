@@ -102,7 +102,7 @@ class Pad extends React.Component {
         }
       })  
        return (
-         <button className="btn btn-primary btn-xl" key ={index} onClick={() =>{this.SoundPlay(soundObj.sound);
+         <button className="btn btn-primary btn-xl" id="q" key ={index} onClick={() =>{this.SoundPlay(soundObj.sound);
             this.setState({
               instrument: soundObj.name
             })
@@ -164,7 +164,8 @@ class Pad extends React.Component {
             </div>
           </div>
           {/* Second column of buttons */}
-        <div className="well bg-midnight"><div class="btn-xl">
+        <div className="well">
+          <div className="btn-xl">
           {this.RenderSecondColumn()}
           </div>
         </div>
